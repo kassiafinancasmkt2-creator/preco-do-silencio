@@ -525,6 +525,64 @@ body.tblack .printPH{box-shadow:0 16px 36px rgba(0,0,0,.6)}
 </style>
 </head>
 <body class="tblack">
+<style>
+body:not(.pw-ok) > :not(#pwGate){visibility:hidden}
+#pwGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+ background:radial-gradient(130% 130% at 50% 45%,#123059 0%,#0A1F3D 46%,#04101f 100%)}
+#pwGate .pwBox{text-align:center;padding:48px 56px;border:1px solid rgba(201,162,74,.55);border-radius:4px;
+ box-shadow:0 30px 90px rgba(0,0,0,.6);max-width:90vw}
+#pwGate .pwTitle{font-family:'Playfair Display',Georgia,serif;color:#F0DA9E;font-size:26px;letter-spacing:.06em;margin-bottom:6px}
+#pwGate .pwSub{font-family:Inter,Arial,sans-serif;color:rgba(246,242,232,.55);font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:28px}
+#pwGate input{background:rgba(2,8,18,.6);border:1px solid rgba(201,162,74,.45);border-radius:3px;color:#F6F2E8;
+ font-family:Inter,Arial,sans-serif;font-size:15px;padding:12px 16px;width:260px;outline:none;text-align:center;letter-spacing:.08em}
+#pwGate input:focus{border-color:#C9A24A;box-shadow:0 0 18px rgba(201,162,74,.35)}
+#pwGate button{display:block;margin:16px auto 0;background:linear-gradient(180deg,#F0DA9E,#C9A24A);border:none;border-radius:3px;
+ color:#0A1F3D;font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.22em;padding:12px 34px;cursor:pointer}
+#pwGate .pwErr{color:#D23B2E;font-family:Inter,Arial,sans-serif;font-size:12px;margin-top:14px;min-height:16px;letter-spacing:.05em}
+body.pw-ok #pwGate{display:none}
+</style>
+<div id="pwGate">
+  <div class="pwBox">
+    <div class="pwTitle">O Preço do Silêncio</div>
+    <div class="pwSub">Acesso restrito · Mentoria Dany Rocha</div>
+    <input id="pwInput" type="password" placeholder="Senha de acesso" autocomplete="off">
+    <button id="pwBtn" type="button">ENTRAR</button>
+    <div class="pwErr" id="pwErr"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var HASH='35ca03637e56ea996d1e33f0d7afb73101962a226c05ef23cc582ae34f430509';
+  var KEY='pds_auth';
+  function unlock(){document.body.classList.add('pw-ok');}
+  if(sessionStorage.getItem(KEY)===HASH){unlock();return;}
+  var gate=document.getElementById('pwGate');
+  gate.addEventListener('keydown',function(e){e.stopPropagation();});
+  gate.addEventListener('keyup',function(e){e.stopPropagation();});
+  document.addEventListener('keydown',function(e){if(!document.body.classList.contains('pw-ok'))e.stopPropagation();});
+  document.addEventListener('keyup',function(e){if(!document.body.classList.contains('pw-ok'))e.stopPropagation();});
+  function sha256(t){
+    return crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf),function(b){return b.toString(16).padStart(2,'0');}).join('');
+    });
+  }
+  function tryPw(){
+    var v=document.getElementById('pwInput').value.trim();
+    if(!v)return;
+    sha256(v).then(function(h){
+      if(h===HASH){sessionStorage.setItem(KEY,h);unlock();}
+      else{
+        document.getElementById('pwErr').textContent='Senha incorreta. Tente novamente.';
+        document.getElementById('pwInput').value='';
+        document.getElementById('pwInput').focus();
+      }
+    });
+  }
+  document.getElementById('pwBtn').addEventListener('click',tryPw);
+  document.getElementById('pwInput').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
+  window.addEventListener('load',function(){document.getElementById('pwInput').focus();});
+})();
+</script>
 <div id="shell">
   <div id="side"><div id="sideInner">
     <div class="shead">
