@@ -57,7 +57,7 @@ h1{font-size:44px}
 .center{text-align:center}
 .txtL{max-width:640px}
 .photoWrap{height:540px;display:flex;align-items:center;justify-content:center}
-.photo{width:100%;height:100%;border-radius:12px;background-size:cover;background-position:center 18%;
+.photo{width:100%;height:100%;border-radius:12px;background-size:cover;background-position:center 18%;background-color:#0c1a2e;background-repeat:no-repeat;
  border:1px solid rgba(201,162,74,.85);outline:1px solid rgba(201,162,74,.25);outline-offset:6px;
  box-shadow:0 24px 60px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.04)}
 .bullets{list-style:none;margin-top:16px}
@@ -257,8 +257,8 @@ body.fsmode #hud{display:none}
 /* debug */
 #dbg{flex:0 0 auto;width:0;height:100%;overflow:hidden;transition:width .3s ease;
   background:rgba(4,10,20,.97);border-left:1px solid #274363;z-index:2;font-size:13px}
-#dbg.on{width:340px}
-#dbgInner{width:340px;height:100%;display:flex;flex-direction:column}
+#dbg.on{width:min(340px,88vw)}
+#dbgInner{width:100%;height:100%;display:flex;flex-direction:column}
 #dbg .dbgHead{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:16px 18px;border-bottom:1px solid #1c2f49;
   font-family:var(--sans);color:var(--gold);letter-spacing:.1em;font-size:13px;flex:0 0 auto}
 #dbgBody{flex:1;overflow:auto;padding:16px 22px 22px}
@@ -274,8 +274,8 @@ body.fsmode #hud{display:none}
 /* sidebar roteiro/prompt */
 #side{flex:0 0 auto;width:0;height:100%;overflow:hidden;transition:width .3s ease;
  background:rgba(4,10,20,.97);border-right:1px solid #274363;z-index:2}
-#side.on{width:380px}
-#sideInner{width:380px;height:100%;display:flex;flex-direction:column}
+#side.on{width:min(380px,88vw)}
+#sideInner{width:100%;height:100%;display:flex;flex-direction:column}
 #side .shead{display:flex;gap:8px;padding:16px 18px;border-bottom:1px solid #1c2f49;align-items:center}
 #side .stab{flex:1;text-align:center;padding:9px 0;border:1px solid #274363;border-radius:8px;cursor:pointer;
  font-family:var(--sans);letter-spacing:.08em;font-size:13px;color:#c9d3e2;background:#0e1e34}
@@ -533,10 +533,17 @@ body:not(.pw-ok) > :not(#pwGate){visibility:hidden}
  box-shadow:0 30px 90px rgba(0,0,0,.6);max-width:90vw}
 #pwGate .pwTitle{font-family:'Playfair Display',Georgia,serif;color:#F0DA9E;font-size:26px;letter-spacing:.06em;margin-bottom:6px}
 #pwGate .pwSub{font-family:Inter,Arial,sans-serif;color:rgba(246,242,232,.55);font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:28px}
+#pwGate .pwFieldWrap{position:relative;display:inline-block}
 #pwGate input{background:rgba(2,8,18,.6);border:1px solid rgba(201,162,74,.45);border-radius:3px;color:#F6F2E8;
- font-family:Inter,Arial,sans-serif;font-size:15px;padding:12px 16px;width:260px;outline:none;text-align:center;letter-spacing:.08em}
+ font-family:Inter,Arial,sans-serif;font-size:15px;padding:12px 44px 12px 16px;width:260px;outline:none;text-align:center;letter-spacing:.08em}
 #pwGate input:focus{border-color:#C9A24A;box-shadow:0 0 18px rgba(201,162,74,.35)}
-#pwGate button{display:block;margin:16px auto 0;background:linear-gradient(180deg,#F0DA9E,#C9A24A);border:none;border-radius:3px;
+#pwGate .pwEye{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none!important;border:none!important;
+ margin:0!important;padding:8px!important;font-size:16px;line-height:1;cursor:pointer;color:rgba(240,218,158,.75);display:flex;align-items:center;justify-content:center}
+#pwGate .pwEye:hover{color:#F0DA9E}
+#pwGate .pwRemember{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;
+ font-family:Inter,Arial,sans-serif;font-size:12px;color:rgba(246,242,232,.7);letter-spacing:.03em;cursor:pointer;user-select:none}
+#pwGate .pwRemember input{width:auto;padding:0;margin:0;accent-color:#C9A24A;cursor:pointer}
+#pwGate button#pwBtn{display:block;margin:18px auto 0;background:linear-gradient(180deg,#F0DA9E,#C9A24A);border:none;border-radius:3px;
  color:#0A1F3D;font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.22em;padding:12px 34px;cursor:pointer}
 #pwGate .pwErr{color:#D23B2E;font-family:Inter,Arial,sans-serif;font-size:12px;margin-top:14px;min-height:16px;letter-spacing:.05em}
 body.pw-ok #pwGate{display:none}
@@ -545,17 +552,21 @@ body.pw-ok #pwGate{display:none}
   <div class="pwBox">
     <div class="pwTitle">O Preço do Silêncio</div>
     <div class="pwSub">Acesso restrito · Mentoria Dany Rocha</div>
-    <input id="pwInput" type="password" placeholder="Senha de acesso" autocomplete="off">
+    <div class="pwFieldWrap">
+      <input id="pwInput" type="password" placeholder="Senha de acesso" autocomplete="off">
+      <button id="pwToggle" type="button" class="pwEye" title="Mostrar senha" aria-label="Mostrar senha">👁</button>
+    </div>
+    <label class="pwRemember"><input type="checkbox" id="pwRemember"> Lembrar senha neste dispositivo</label>
     <button id="pwBtn" type="button">ENTRAR</button>
     <div class="pwErr" id="pwErr"></div>
   </div>
 </div>
 <script>
 (function(){
-  var HASH='35ca03637e56ea996d1e33f0d7afb73101962a226c05ef23cc582ae34f430509';
+  var HASH='d0eea09126f13844e0048842e86fdddd3245f3cba6b4e262a9a4d38fb789f0ae';
   var KEY='pds_auth';
   function unlock(){document.body.classList.add('pw-ok');}
-  if(sessionStorage.getItem(KEY)===HASH){unlock();return;}
+  if(sessionStorage.getItem(KEY)===HASH||localStorage.getItem(KEY)===HASH){unlock();return;}
   var gate=document.getElementById('pwGate');
   gate.addEventListener('keydown',function(e){e.stopPropagation();});
   gate.addEventListener('keyup',function(e){e.stopPropagation();});
@@ -570,8 +581,11 @@ body.pw-ok #pwGate{display:none}
     var v=document.getElementById('pwInput').value.trim();
     if(!v)return;
     sha256(v).then(function(h){
-      if(h===HASH){sessionStorage.setItem(KEY,h);unlock();}
-      else{
+      if(h===HASH){
+        if(document.getElementById('pwRemember').checked){localStorage.setItem(KEY,h);}
+        else{sessionStorage.setItem(KEY,h);}
+        unlock();
+      }else{
         document.getElementById('pwErr').textContent='Senha incorreta. Tente novamente.';
         document.getElementById('pwInput').value='';
         document.getElementById('pwInput').focus();
@@ -580,6 +594,15 @@ body.pw-ok #pwGate{display:none}
   }
   document.getElementById('pwBtn').addEventListener('click',tryPw);
   document.getElementById('pwInput').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
+  document.getElementById('pwToggle').addEventListener('click',function(){
+    var inp=document.getElementById('pwInput');
+    var showing=inp.type==='text';
+    inp.type=showing?'password':'text';
+    this.textContent=showing?'👁':'🙈';
+    this.title=showing?'Mostrar senha':'Ocultar senha';
+    this.setAttribute('aria-label',this.title);
+    inp.focus();
+  });
   window.addEventListener('load',function(){document.getElementById('pwInput').focus();});
 })();
 </script>
@@ -587,7 +610,7 @@ body.pw-ok #pwGate{display:none}
   <div id="side"><div id="sideInner">
     <div class="shead">
       <div class="stab" id="tabRot" onclick="setSide('rot')">📋 O QUE FALAR</div>
-      <div class="stab" id="tabPmt" onclick="setSide('pmt')">🎨 PROMPT DO SLIDE</div>
+      <div class="stab" id="tabPmt" onclick="setSide('pmt')" style="display:none">🎨 PROMPT DO SLIDE</div>
       <button class="closeSide" onclick="closeSide()" title="Fechar">✕</button>
     </div>
     <div class="sbody" id="sbody"></div>
@@ -655,12 +678,12 @@ A({sec:"EXCLUSIVIDADE",layout:"xnegar",title:"POSTAR MAIS NÃO VAI TE FAZER<br>S
 A({sec:"EXCLUSIVIDADE",layout:"statement",title:"NINGUÉM FALA ISSO<br>EM <span class='g'>CURSO NENHUM!</span>",font:"sans",tsize:"med",dbg:{obj:"Martelar exclusividade.",emo:"Curiosidade elevada.",gat:["Exclusividade","Autoridade"],status:"Definitiva (texto)",obs:"Equiv. Kássia S16."}});
 A({sec:"EXCLUSIVIDADE",layout:"xnegar",title:"E VOCÊ NÃO ENCONTRA<br>EM <span class='g'>LIVRO NENHUM.</span>",font:"sans",tsize:"med",sub:"método prático, não teoria reciclada.",concept:"x-book",conceptDesc:"Livro antigo coberto por X vermelho.",dbg:{obj:"Fechar arco de unicidade + diferenciação prática.",emo:"Exclusividade + confiança.",gat:["Exclusividade","Diferenciação"],status:"Placeholder conceitual",obs:"Equiv. Kássia S17."}});
 A({sec:"STAKES",layout:"promessa",selo:"ENTÃO PRESTA MUITA ATENÇÃO!",title:"PORQUE ISSO AQUI PODE SER O <span class='g'>DIVISOR DE ÁGUAS</span> ENTRE VOCÊ CONTINUAR CALADA...",font:"sans",tsize:"med",photo:"S021_Dany_Autoridade_Reflexiva.jpg",dbg:{obj:"Reancorar atenção + elevar stakes.",emo:"Tensão positiva.",gat:["Urgência","Custo da inação","Loop aberto"],status:"Definitiva (foto real)",origem:"Fotos Dany",obs:"Equiv. Kássia S18."}});
-A({sec:"FUTURE PACING",layout:"conceptCenter",title:"OU FINALMENTE RECUPERAR A SUA <span class='g'>VOZ</span> E O SEU <span class='g'>LUGAR</span>.",font:"sans",tsize:"med",concept:"voice-light",conceptDesc:"Mulher saindo da sombra para a luz dourada / ondas de voz.",dbg:{obj:"Fechar o contraste com a visão positiva.",emo:"Esperança, desejo.",gat:["Future pacing","Desejo","Contraste"],status:"Placeholder conceitual",obs:"Equiv. Kássia S19."}});
+A({sec:"FUTURE PACING",layout:"conceptCenter",title:"OU FINALMENTE RECUPERAR A SUA <span class='g'>VOZ</span> E O SEU <span class='g'>LUGAR DE RAINHA</span>.",font:"sans",tsize:"med",concept:"voice-light",conceptDesc:"Mulher saindo da sombra para a luz dourada / ondas de voz.",dbg:{obj:"Fechar o contraste com a visão positiva.",emo:"Esperança, desejo.",gat:["Future pacing","Desejo","Contraste"],status:"Placeholder conceitual",obs:"Equiv. Kássia S19."}});
 A({sec:"ENGAJAMENTO",layout:"two",title:"QUEM AQUI QUER APRENDER A SE POSICIONAR E FAZER A SUA <span class='g'>VOZ SER OUVIDA?</span>",font:"sans",tsize:"med",sub:"Mesmo que hoje você trave na hora de falar e não saiba por onde começar.",btn:"DIGITA \"EU\" NO CHAT",concept:"speech",conceptDesc:"Balão de fala 3D dourado (chat).",dbg:{obj:"Micro-compromisso público (consistência).",emo:"Vontade de participar.",gat:["Compromisso","Pertencimento","Prova social"],status:"Definitiva (texto)",obs:"Equiv. Kássia S20."}});
 A({sec:"ENGAJAMENTO",layout:"promessa",title:"QUEM AQUI QUER DEIXAR UM <span class='g'>LEGADO</span> PRA SUA <span class='g'>FAMÍLIA</span> E FINALIZAR 2026 DIFERENTE DE COMO COMEÇOU?",font:"serif",tsize:"med",photo:"S021b_Dany_Familia_Batismo_Fe.png",dbg:{obj:"Ativar o 'porquê' profundo (família/legado).",emo:"Amor, aspiração.",gat:["Conexão emocional","Autoridade"],status:"Definitiva (foto real)",origem:"Fotos Dany",obs:"Equiv. Kássia S21. Foto de família/batismo reforça fé + legado."}});
 A({sec:"COMPROMISSO",layout:"promessa",title:"QUANTAS DE VOCÊS ESTÃO <span class='g'>COMPROMETIDAS</span> A COLOCAR EM PRÁTICA TUDO O QUE SERÁ ENSINADO?",font:"serif",tsize:"med",sub:"Pra reencontrar a identidade, se posicionar com propósito e ter a coragem de usar a própria voz.",btn:"ENVIA O EMOJI 🔥 NO CHAT",photo:"S022_Dany_Compromisso_Webcam.jpg",dbg:{obj:"Selar o 'pacto' de ação antes da história.",emo:"Compromisso, energia.",gat:["Compromisso","Prova social","Ação"],status:"Definitiva (foto real)",origem:"Fotos Dany",obs:"Equiv. Kássia S22 (webcam)."}});
 A({sec:"HISTÓRIA",layout:"divider",title:"QUEM ERA A <span class='g'>DANY</span> ANTES DE RECUPERAR A SUA <span class='g'>VOZ</span>?",font:"serif",tsize:"med",extra:"<div class='chev' style='font-size:22px;margin-top:14px'>❮ &nbsp; ❯</div>",dbg:{obj:"Abrir o storytelling de origem.",emo:"Curiosidade pela história.",gat:["Curiosidade","História"],status:"Definitiva (texto)",obs:"Equiv. Kássia S23."}});
-A({sec:"HISTÓRIA",layout:"photostory",title:"A MENTIRA QUE ME <span class='g'>CONTARAM...</span>",font:"serif",boxes:["Eu perdi minha mãe aos 2 anos. Fui dada, com meus irmãos, pra minha tia.","Cresci a menina que vivia debaixo da mesa, que não falava com ninguém, que vivia triste.","A vida vai te fazendo se acostumar com o que você não merece."],photo:"FOTOS ILUSTRATIVAS/S024_Menina_Mesa.png",dbg:{obj:"Iniciar origem com vulnerabilidade real (a menina).",emo:"Identificação, empatia.",gat:["História","Vulnerabilidade","Identificação"],status:"FOTO NECESSÁRIA (só ilustrativa disponível)",origem:"A produzir / ilustrativa",obs:"Equiv. Kássia S24. Base: áudio BLOCO 1 e pptx 'Ativando a Identidade'."}});
+A({sec:"HISTÓRIA",layout:"photostory",title:"A MENTIRA QUE ME <span class='g'>CONTARAM...</span>",font:"serif",boxes:["Eu perdi minha mãe aos 2 anos. Fui dada, com meus irmãos, pra minha tia.","Cresci a menina que vivia debaixo da mesa, que não falava com ninguém, que vivia triste.","A vida vai te fazendo se acostumar com o que você não merece."],photo:"FOTOS ILUSTRATIVAS/S024_Menina_Mesa.png",fit:"contain",dbg:{obj:"Iniciar origem com vulnerabilidade real (a menina).",emo:"Identificação, empatia.",gat:["História","Vulnerabilidade","Identificação"],status:"FOTO NECESSÁRIA (só ilustrativa disponível)",origem:"A produzir / ilustrativa",obs:"Equiv. Kássia S24. Base: áudio BLOCO 1 e pptx 'Ativando a Identidade'."}});
 A({sec:"HISTÓRIA",layout:"photostory",title:"A MENINA QUE <span class='g'>OLHAVA POR TRÁS DO VIDRO</span>",font:"serif",boxes:["Dormia no quartinho de empregada. Usava o resto de roupa das primas.","Enquanto elas brincavam e faziam piquenique, eu olhava do lado de fora, pelo vidro.","Até os 7 anos, nunca tive um bolo, nunca tive uma festa de aniversário."],photo:"FOTOS ILUSTRATIVAS/S025_Menina_Vidro.png",ori:"center 82%",dbg:{obj:"Aprofundar o fundo do poço (exclusão).",emo:"Empatia profunda.",gat:["História","Identificação","Prova (real)"],status:"Definitiva (ilustrativa)",origem:"IA / ilustrativa",obs:"Equiv. Kássia S25 (linha do tempo em fotos)."}});
 A({sec:"HISTÓRIA",layout:"promessa",title:"FOI AÍ QUE EU ENCONTREI A MINHA <span class='g'>VOZ</span>",font:"serif",tsize:"med",sub:"Achei uma câmera jogada. E o que eu não falava, a câmera falava por mim.",photo:"FOTOS ILUSTRATIVAS/S026_Camera_Voz.png",dbg:{obj:"Epifania / mecanismo pessoal (a câmera = a voz).",emo:"Virada, primeiro raio de esperança.",gat:["Epifania","Curiosidade","Identificação"],status:"Placeholder conceitual",obs:"Equiv. Kássia S26 (lâmpada). Base: áudio BLOCO 1."}});
 A({sec:"HISTÓRIA",layout:"twoRev",title:"O INIMIGO NÃO ERA O MUNDO LÁ FORA.<br>ERA O <span class='g'>SILÊNCIO</span> QUE ME ENSINARAM A ACEITAR.",font:"serif",tsize:"med",photo:"S021_Dany_Autoridade_Reflexiva.jpg",dbg:{obj:"Quebra de crença central (o inimigo é interno).",emo:"Insight libertador.",gat:["Quebra de crença","Empoderamento"],status:"Definitiva (foto real)",origem:"Fotos Dany",obs:"Equiv. Kássia S27. Reuso da foto reflexiva (ok no protótipo)."}});
@@ -795,7 +818,7 @@ const PROMPTS={
 16:`DECLARAÇÃO. Frase única gigante centralizada: "NINGUÉM FALA ISSO" (dourado) / "EM CURSO NENHUM!" (branco). Halo de luz dourada central, partículas.`,
 17:`NEGAÇÃO 3. Imagem à esquerda: livro antigo de couro sobre grade dourada luminosa, coberto por X VERMELHO. Direita: "E VOCÊ NÃO ENCONTRA EM LIVRO NENHUM." + subtítulo dourado "método prático, não teoria reciclada".`,
 18:`STAKES. Selo branco "ENTÃO PRESTA MUITA ATENÇÃO!" no topo. Título: "PORQUE ISSO AQUI PODE SER O DIVISOR DE ÁGUAS ENTRE VOCÊ CONTINUAR CALADA..." (DIVISOR DE ÁGUAS dourado gigante). Direita: FOTO REAL S021 (reflexiva) com faixa vertical de luz dourada.`,
-19:`FUTURE PACING. Centralizado: "OU FINALMENTE RECUPERAR A SUA VOZ E O SEU LUGAR." (VOZ e LUGAR dourados). Imagem: silhueta feminina saindo da sombra para uma luz dourada, ondas sonoras douradas irradiando.`,
+19:`FUTURE PACING. Centralizado: "OU FINALMENTE RECUPERAR A SUA VOZ E O SEU LUGAR DE RAINHA." (VOZ e LUGAR DE RAINHA dourados). Imagem: silhueta feminina saindo da sombra para uma luz dourada, ondas sonoras douradas irradiando.`,
 20:`ENGAJAMENTO CHAT. Esquerda: "QUEM AQUI QUER APRENDER A SE POSICIONAR E FAZER A SUA VOZ SER OUVIDA?" + subtítulo + botão dourado "DIGITA \"EU\" NO CHAT". Direita: balão de fala 3D dourado brilhante com reticências.`,
 21:`LEGADO. Esquerda: "QUEM AQUI QUER DEIXAR UM LEGADO PRA SUA FAMÍLIA E FINALIZAR 2026 DIFERENTE?" (LEGADO, FAMÍLIA dourados, serifada). Direita: FOTO REAL S021b (família/batismo).`,
 22:`COMPROMISSO. Título "QUANTAS DE VOCÊS ESTÃO COMPROMETIDAS A COLOCAR EM PRÁTICA..." + botão dourado "ENVIA O EMOJI 🔥 NO CHAT". Direita: FOTO REAL S022 (webcam acolhedora).`,
@@ -911,7 +934,7 @@ const FALAS={
 16:`Martele: "ninguém fala disso em curso nenhum." O mercado ensina ferramenta; identidade ninguém ensina.`,
 17:`"E você não encontra em livro nenhum, porque isso aqui é método vivido, não teoria reciclada."`,
 18:`Selo de atenção: "presta MUITA atenção agora. Isso pode ser o divisor de águas entre você continuar calada..."`,
-19:`"...ou finalmente recuperar a sua voz e o seu lugar." Pinte a cena: como seria acordar sendo ouvida, chamada, valorizada.`,
+19:`"...ou finalmente recuperar a sua voz e o seu lugar de rainha." Pinte a cena: como seria acordar sendo ouvida, chamada, valorizada.`,
 20:`CTA de chat: "quem quer aprender a se posicionar e ser ouvida, digita EU." Leia nomes de quem respondeu.`,
 21:`Eleve o porquê: família, legado, terminar 2026 diferente de como começou. Fale do coração, pode citar seus filhos e sua neta.`,
 22:`Feche o pacto: "quem se compromete a colocar em prática, manda o 🔥." Celebre o chat pegando fogo.`,
@@ -1054,9 +1077,10 @@ function concept(key,desc){
   return `<div class="phWrap"><div class="ph"><span class="tag">CONCEITO · FASE 3: ARTE FINAL</span><div class="artbox">${a.svg}</div><span class="lab">${a.lab}</span><span class="desc">${desc||''}</span></div></div>`;
 }
 function IMGU(f){return f.includes('/')?('../'+f):('../FOTOS/'+f);}
-function photoBox(src,ori){ if(!src) return '';
+function photoBox(src,ori,fit){ if(!src) return '';
   const pos=ori?` background-position:${ori};`:'';
-  return `<div class="photoWrap"><div class="photo" style="background-image:url('${IMGU(src)}');${pos}"></div></div>`;}
+  const sz=fit?` background-size:${fit};`:'';
+  return `<div class="photoWrap"><div class="photo" style="background-image:url('${IMGU(src)}');${pos}${sz}"></div></div>`;}
 function needBox(desc){
   return `<div class="phWrap"><div class="ph" style="border-color:#5c2020;background:rgba(210,59,46,.06)">
     <span class="tag" style="color:#e79a9a;border-color:#5c2020">FOTO NECESSÁRIA</span>
@@ -1177,8 +1201,8 @@ function conceptC(s){
   return `<div class="phWrap"><div class="ph artUnder"><div class="artbox">${a.svg}</div><span class="lab">${a.lab}</span><span class="desc">${s.conceptDesc||''}</span>${OVERIMG(f,false,n)}<span class="tag">${f||'CONCEITO'}</span></div></div>`;
 }
 function media(s){
-  if(s.boxPhoto) return photoBox(s.boxPhoto,s.ori);
-  if(s.photo) return photoBox(s.photo,s.ori);
+  if(s.boxPhoto) return photoBox(s.boxPhoto,s.ori,s.fit);
+  if(s.photo) return photoBox(s.photo,s.ori,s.fit);
   if(s.need)  return needBox(s.need);
   if(s.concept) return conceptC(s);
   if(s.vidSlide) return bigVideoBox(s.vidSlide);
@@ -1347,20 +1371,37 @@ window.addEventListener('keydown',e=>{
   if(e.key==='Escape'){closeSide();closeDbg();}
   if(e.key==='Home')show(0); if(e.key==='End')show(SLIDES.length-1);
 });
+let pseudoFS=false;
+function fsActive(){return !!document.fullscreenElement||pseudoFS;}
+function updateFS(){
+  const b=document.getElementById('fsBtnHud');
+  const active=fsActive();
+  if(b)b.textContent=active?'⛶ Sair da tela cheia (F)':'⛶ Tela cheia (F)';
+  document.body.classList.toggle('fsmode',active);
+  fit();
+}
 function toggleFS(){
   const el=document.documentElement;
-  if(!document.fullscreenElement){
-    (el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen).call(el);
+  const reqFn=el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen;
+  const exitFn=document.exitFullscreen||document.webkitExitFullscreen||document.msExitFullscreen;
+  if(!fsActive()){
+    if(reqFn){
+      try{
+        const p=reqFn.call(el);
+        if(p&&p.catch)p.catch(()=>{pseudoFS=true;updateFS();});
+      }catch(err){pseudoFS=true;updateFS();}
+    }else{
+      pseudoFS=true;
+    }
   }else{
-    (document.exitFullscreen||document.webkitExitFullscreen||document.msExitFullscreen).call(document);
+    if(document.fullscreenElement&&exitFn){
+      try{exitFn.call(document);}catch(err){}
+    }
+    pseudoFS=false;
   }
+  updateFS();
 }
-document.addEventListener('fullscreenchange',()=>{
-  const b=document.getElementById('fsBtnHud');
-  if(b)b.textContent=document.fullscreenElement?'⛶ Sair da tela cheia (F)':'⛶ Tela cheia (F)';
-  document.body.classList.toggle('fsmode',!!document.fullscreenElement);
-  fit();
-});
+document.addEventListener('fullscreenchange',updateFS);
 /* sidebar roteiro/prompt */
 let sideMode='rot';
 function toggleSide(mode){
@@ -1410,10 +1451,10 @@ function updDbg(){
 }
 function fit(){
   const app=document.getElementById('app');
-  const fs=!!document.fullscreenElement;
+  const fs=fsActive();
   const w=app.clientWidth,h=app.clientHeight;
   const vPad=fs?24:84;
-  const s=Math.min((w-32)/1280,(h-vPad)/720);
+  const s=Math.max(.12,Math.min((w-32)/1280,(h-vPad)/720));
   document.getElementById('stageWrap').style.transform='scale('+s+')';
 }
 window.addEventListener('resize',fit);
