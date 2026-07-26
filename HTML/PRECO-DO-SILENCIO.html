@@ -1165,8 +1165,10 @@ const LICON={
 98:['gem','chat','mapx','flame']};
 /* modificador visual de tamanho dos cards de ícone (mesmos ícones, cards maiores) */
 const CARDMOD={88:'bigCards',89:'bigCards',90:'bigCards',98:'bigCards squareCards'};
-function mosaicHTML(){const list=['S050_M1_Grupo.jpg','S050_M2_Networking.jpg','S050_M3_Camila.jpg','S050_M5_Pablo.jpg','S050_M6_Vanessa.jpg','S050_M7_Fitipaldi.jpg'];
-return `<div class="photoMosaic">${list.map(f=>`<div class="mCell" style="background-image:url('../FOTOS/${f}')"></div>`).join('')}</div>`;}
+function mosaicHTML(){const list=['S050_M1_Famoso.jpg','S050_M2_Networking.jpg','S050_M3_Camila.jpg','S050_M5_Marcal.jpg','S050_M6_Viviane.jpg','S050_M7_Fitipaldi.jpg'];
+/* posição do rosto por foto (retrato cortado numa célula paisagem: sem isso o corte pega o tronco/barriga em vez do rosto) */
+const MPOS={'S050_M1_Famoso.jpg':'center 22%','S050_M5_Marcal.jpg':'center 18%','S050_M6_Viviane.jpg':'center 18%'};
+return `<div class="photoMosaic">${list.map(f=>`<div class="mCell" style="background-image:url('../FOTOS/${f}');${MPOS[f]?`background-position:${MPOS[f]};`:''}"></div>`).join('')}</div>`;}
 /* posição do recorte por slide (enquadramento) */
 const EPOS={26:'center 88%',98:'center 50%'};
 /* background-size override por slide (ex: 'contain' pra nunca cortar ninguém em colagens) */
