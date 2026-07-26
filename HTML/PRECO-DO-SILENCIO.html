@@ -250,6 +250,16 @@ p{font-weight:300}
 #hud{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:14px;padding:12px 20px;
  background:linear-gradient(0deg,rgba(2,8,16,.95),transparent);z-index:40}
 body.fsmode #hud{display:none}
+/* botao flutuante de saida da tela cheia: no celular a barra some e nao
+   existe tecla Esc, entao sem ele nao ha como voltar */
+#fsExit{display:none;position:fixed;top:14px;right:14px;z-index:70;align-items:center;gap:8px;
+ background:rgba(4,10,20,.78);border:1px solid rgba(201,162,74,.6);color:var(--gold);
+ border-radius:12px;min-height:44px;padding:0 16px;cursor:pointer;
+ font-family:var(--sans);letter-spacing:.1em;font-size:13px;line-height:1;
+ box-shadow:0 8px 24px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+#fsExit:hover{background:rgba(201,162,74,.26);border-color:var(--gold)}
+body.fsmode #fsExit{display:flex}
+@media (max-width:900px){#fsExit{top:10px;right:10px;padding:0 14px;font-size:12px}}
 #hud button{background:#0e1e34;color:var(--white);border:1px solid #274363;border-radius:8px;padding:8px 16px;cursor:pointer;font-family:var(--sans);letter-spacing:.06em;font-size:13px}
 #hud button:hover{background:#173052;border-color:var(--gold)}
 #prog{flex:1;height:3px;background:#11223a;border-radius:4px;overflow:hidden}
@@ -656,6 +666,7 @@ body.pw-ok #pwGate{display:none}
   <button onclick="toggleSide('rot')">📋 Roteiro (R)</button>
   <button onclick="toggleFS()" id="fsBtnHud">⛶ Tela cheia (F)</button>
 </div>
+<button id="fsExit" onclick="toggleFS()" title="Sair da tela cheia" aria-label="Sair da tela cheia">✕&nbsp; SAIR DA TELA CHEIA</button>
 <script>
 const SLIDES=[];
 function A(o){SLIDES.push(o);}
@@ -1444,7 +1455,8 @@ window.addEventListener('keydown',e=>{
 })();
 window.addEventListener('orientationchange',function(){setTimeout(fit,260);});
 let pseudoFS=false;
-function fsActive(){return !!document.fullscreenElement||pseudoFS;}
+function fsEl(){return document.fullscreenElement||document.webkitFullscreenElement||document.msFullscreenElement||null;}
+function fsActive(){return !!fsEl()||pseudoFS;}
 function updateFS(){
   const b=document.getElementById('fsBtnHud');
   const active=fsActive();
@@ -1457,23 +1469,31 @@ function toggleFS(){
   const reqFn=el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen;
   const exitFn=document.exitFullscreen||document.webkitExitFullscreen||document.msExitFullscreen;
   if(!fsActive()){
+    let pediu=false;
     if(reqFn){
       try{
         const p=reqFn.call(el);
-        if(p&&p.catch)p.catch(()=>{pseudoFS=true;updateFS();});
-      }catch(err){pseudoFS=true;updateFS();}
-    }else{
-      pseudoFS=true;
+        pediu=true;
+        if(p&&p.catch)p.catch(function(){pseudoFS=true;updateFS();});
+      }catch(err){pediu=false;}
+    }
+    if(!pediu){pseudoFS=true;}
+    else{
+      /* iOS, webviews e iframes sem permissao nao entram em tela cheia E
+         tambem nao rejeitam a promessa: sem esta conferencia o botao
+         simplesmente nao fazia nada. */
+      setTimeout(function(){
+        if(!fsEl()&&!pseudoFS){pseudoFS=true;updateFS();}
+      },350);
     }
   }else{
-    if(document.fullscreenElement&&exitFn){
-      try{exitFn.call(document);}catch(err){}
-    }
+    if(fsEl()&&exitFn){try{exitFn.call(document);}catch(err){}}
     pseudoFS=false;
   }
   updateFS();
 }
 document.addEventListener('fullscreenchange',updateFS);
+document.addEventListener('webkitfullscreenchange',updateFS);
 /* sidebar roteiro/prompt */
 let sideMode='rot';
 function toggleSide(mode){
