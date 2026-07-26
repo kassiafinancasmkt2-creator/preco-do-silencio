@@ -1167,7 +1167,7 @@ const LICON={
 const CARDMOD={88:'bigCards',89:'bigCards',90:'bigCards',98:'bigCards squareCards'};
 function mosaicHTML(){const list=['S050_M1_Famoso.jpg','S050_M2_Networking.jpg','S050_M3_Camila.jpg','S050_M5_Marcal.jpg','S050_M6_Viviane.jpg','S050_M7_Fitipaldi.jpg'];
 /* posição do rosto por foto (retrato cortado numa célula paisagem: sem isso o corte pega o tronco/barriga em vez do rosto) */
-const MPOS={'S050_M1_Famoso.jpg':'center 36%','S050_M5_Marcal.jpg':'center 18%','S050_M6_Viviane.jpg':'center 36%'};
+const MPOS={'S050_M1_Famoso.jpg':'center 36%','S050_M5_Marcal.jpg':'center 18%','S050_M6_Viviane.jpg':'center 40%'};
 return `<div class="photoMosaic">${list.map(f=>`<div class="mCell" style="background-image:url('../FOTOS/${f}');${MPOS[f]?`background-position:${MPOS[f]};`:''}"></div>`).join('')}</div>`;}
 /* posição do recorte por slide (enquadramento) */
 const EPOS={26:'center 88%',98:'center 50%'};
