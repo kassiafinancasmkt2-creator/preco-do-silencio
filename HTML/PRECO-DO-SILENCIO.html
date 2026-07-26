@@ -562,7 +562,14 @@ html,body{touch-action:manipulation}           /* mata o zoom de toque duplo */
 </head>
 <body class="tblack">
 <style>
-body:not(.pw-ok) > :not(#pwGate){visibility:hidden}
+/* O gate cobre a tela com fundo 100% opaco (nao usamos visibility:hidden
+   no conteudo por baixo): Safari deprioriza/pula o carregamento de
+   background-image e <img> de elementos escondidos por visibility/display,
+   e nem sempre recupera isso depois que eles ficam visiveis. Deixando o
+   conteudo no fluxo normal, as fotos comecam a carregar por baixo do gate
+   enquanto a pessoa ainda esta digitando a senha. */
+body:not(.pw-ok){overflow:hidden}
+body:not(.pw-ok) #shell,body:not(.pw-ok) #hud{pointer-events:none}
 #pwGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
  background:radial-gradient(130% 130% at 50% 45%,#123059 0%,#0A1F3D 46%,#04101f 100%)}
 #pwGate .pwBox{text-align:center;padding:48px 56px;border:1px solid rgba(201,162,74,.55);border-radius:4px;
@@ -1381,10 +1388,48 @@ const HYD_WIN=1;
 function slideHTML(s,i){
   return `<div class="corner tl"></div><div class="corner br"></div>${s.frame!==false?'<div class="frame"></div>':''}${SECBADGE[i+1]?`<div class="secBadge">◈&nbsp; ${SECBADGE[i+1]} &nbsp;◈</div>`:''}${render(s)}${s.note?`<div class="note">${s.note}</div>`:''}`;
 }
+/* rede instavel / hiccup momentaneo no CDN nao deveria deixar uma foto
+   quebrada pra sempre: tenta de novo uma vez, com um parametro novo na
+   URL pra nao reaproveitar uma resposta de erro que o navegador guardou
+   em cache. */
+function armImages(root){
+  root.querySelectorAll('img').forEach(function(img){
+    if(img.classList.contains('overImg')||img.dataset.armed)return;
+    img.dataset.armed='1';
+    img.addEventListener('error',function retry(){
+      img.removeEventListener('error',retry);
+      if(img.dataset.retried)return;
+      img.dataset.retried='1';
+      setTimeout(function(){
+        try{const u=new URL(img.src,location.href);u.searchParams.set('r',Date.now()+'-'+Math.random().toString(36).slice(2));img.src=u.href;}catch(e){}
+      },700);
+    });
+  });
+  root.querySelectorAll('[style*="background-image"]').forEach(function(el){
+    if(el.dataset.armed)return;
+    el.dataset.armed='1';
+    const m=/url\(["']?([^"')]+)["']?\)/.exec(el.style.backgroundImage);
+    if(!m)return;
+    const url=m[1];
+    const probe=new Image();
+    probe.onerror=function(){
+      setTimeout(function(){
+        try{
+          const u=new URL(url,location.href);u.searchParams.set('r',Date.now()+'-'+Math.random().toString(36).slice(2));
+          const retry=new Image();
+          retry.onload=function(){el.style.backgroundImage="url('"+u.href+"')";};
+          retry.src=u.href;
+        }catch(e){}
+      },700);
+    };
+    probe.src=url;
+  });
+}
 function hydrate(i){
   if(HYD.has(i))return;
   const d=stage.children[i];if(!d)return;
   d.innerHTML=slideHTML(SLIDES[i],i);
+  armImages(d);
   HYD.add(i);
 }
 function dehydrate(i){
