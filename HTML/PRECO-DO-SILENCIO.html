@@ -386,7 +386,7 @@ h1{font-size:44px}
 /* vídeo grande, meio-a-meio com o título (layout 'two') — no estilo das fotos sangradas: cover + transição + play em destaque */
 .videoStage{border:1px solid rgba(201,162,74,.6);border-radius:18px;overflow:hidden;position:relative;background:#000;
  box-shadow:0 24px 60px rgba(0,0,0,.55);height:540px;filter:contrast(1.08) saturate(1.12) brightness(1.03)}
-.videoStage video{width:100%;height:100%;display:block;background:#000;object-fit:cover}
+.videoStage video{width:100%;height:100%;display:block;background:#000;object-fit:contain}
 .videoStage:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
  background:linear-gradient(0deg,rgba(4,10,20,.85) 0%,rgba(4,10,20,.15) 30%,transparent 46%),
  radial-gradient(60% 50% at 60% 25%,rgba(201,162,74,.06),transparent 70%)}
