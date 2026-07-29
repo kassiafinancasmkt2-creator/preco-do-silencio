@@ -810,7 +810,6 @@ A({sec:"O QUE VOCÊ ACESSA",layout:"statement",kick:"SEMANA 6",title:"O <span cl
 A({sec:"COMUNIDADE",layout:"promessa",title:"E VOCÊ <span class='g'>NÃO VAI SOZINHA.</span>",font:"sans",tsize:"med",sub:"Você entra para um movimento de mulheres que sobem juntas: o Queens Club World.",photo:"S099_Dany_Comunidade_QueensClub.png",dbg:{obj:"Quebrar o medo do isolamento (comunidade).",emo:"Pertencimento, segurança.",gat:["Comunidade","Prova social"],status:"Definitiva (foto real)",origem:"Fotos Dany",obs:"Equiv. Kássia S99-100."}});
 A({sec:"COMUNIDADE",layout:"list",title:"QUEM AQUI GOSTARIA QUE EU TE AJUDASSE A:",cols:2,bullets:["Gravar o seu <span class='g'>primeiro vídeo</span>","<span class='g'>Falar em público</span> sem travar","Definir a sua <span class='g'>mensagem</span> e o seu nicho","Construir <span class='g'>autoridade</span> e network","Se posicionar no <span class='g'>Instagram</span>","Ocupar o <span class='g'>seu lugar</span> com propósito"],extra:"<div style='text-align:center;margin-top:28px'><span class='chatCTA'><span class='emo'>💬</span> Se alguma dessas é você, reage no chat com um <b>EU</b></span></div>",dbg:{obj:"Materializar o acompanhamento em resultados.",emo:"Desejo, esperança.",gat:["Serviço","Enumeração","Engajamento"],status:"Definitiva (material real), com CTA de reação no chat",obs:"Equiv. Kássia S100."}});
 A({sec:"PROVA",layout:"statement",title:"MÉTODO CERTO, <span class='g'>TEMPO A SEU FAVOR.</span><br>O QUE PARECIA LEVAR ANOS VIRA <span class='g'>SEMANAS.</span>",font:"sans",tsize:"med",dbg:{obj:"Prova de velocidade.",emo:"Esperança.",gat:["Prova social","Velocidade"],status:"Texto editorial (sem depoimento disponível para esse slide)",origem:"",obs:"Equiv. Kássia S103."}});
-A({sec:"FECHAMENTO",layout:"two",title:"“EU NÃO TINHA A MENOR <span class='g'>INTENÇÃO</span> DE ESTAR AQUI.”",font:"serif",tsize:"med",sub:"Raquel · concluiu a mentoria e diz: valeu a pena.",vidSlide:94,dbg:{obj:"Quebrar objeção de fracasso prévio / relutância inicial.",emo:"Alívio.",gat:["Quebra de objeção","Reversão de culpa","Prova social (vídeo)"],status:"Real (Raquel, depoimento em vídeo), meio-a-meio",origem:"DEPOIMENTOS/DEPOIMENTO REAL - RAQUEL (EVENTO DANI)",obs:"Equiv. Kássia S104. Trocado texto genérico por depoimento real da Raquel, a pedido do Fernando."}});
 A({sec:"FECHAMENTO",layout:"two",title:"QUEM SERÁ A <span class='g'>PRÓXIMA?</span>",font:"serif",tsize:"med",sub:"Melissa Esquilino · subiu no palco e decidiu.",vidSlide:95,dbg:{obj:"Projeção (você pode ser a próxima).",emo:"Aspiração.",gat:["Prova social","Projeção","Convite"],status:"Real (Melissa Esquilino, vídeo do palco), meio-a-meio com vídeo em evidência",origem:"DEPOIMENTOS/MENTORADA MELISSA ESQILINO",obs:"Equiv. Kássia S107. Antes repetia Catherine; agora vídeo real e inédito, em destaque."}});
 A({sec:"CONVITE",layout:"statement",title:"ESTOU PROCURANDO ALGUMAS <span class='g'>MULHERES</span> PRA AJUDAR A SE LIBERTAR DO SILÊNCIO, AINDA ESTE ANO.",font:"serif",tsize:"med",dbg:{obj:"Abrir a seleção (desejo reverso, escassez).",emo:"Desejo de ser escolhida.",gat:["Escassez","Desejo reverso","Exclusividade"],status:"Definitiva (texto)",obs:"Equiv. Kássia S108. Início do funil de convite."}});
 A({sec:"CONVITE",layout:"statement",title:"QUEM DEPENDE DE VOCÊ <span class='g'>RECUPERAR A SUA VOZ?</span>",font:"serif",tsize:"med",sub:"Seus filhos, as mulheres que você pode inspirar, a sua própria história.",extra:"<div style='text-align:center;margin-top:28px'><span class='chatCTA'><span class='emo'>💬</span> Reaja no chat escrevendo <b>EU</b></span></div>",dbg:{obj:"Elevar o peso da decisão (motivação por terceiros).",emo:"Responsabilidade afetiva.",gat:["Motivação por terceiros","Reflexão"],status:"Definitiva (texto), com CTA de reação no chat",obs:"Equiv. Kássia S109."}});
@@ -933,25 +932,24 @@ const PROMPTS={
 90:`COMUNIDADE. Esquerda: "E VOCÊ NÃO VAI SOZINHA." + sub sobre o Queens Club World. Direita: FOTO REAL S099 (grupo de mulheres, coroa).`,
 91:`AJUDA CONCRETA. Título "QUEM AQUI GOSTARIA QUE EU TE AJUDASSE A:" + 6 itens com check dourado (primeiro vídeo, falar em público, mensagem/nicho, autoridade, Instagram, seu lugar).`,
 92:`PROVA VELOCIDADE. "QUANDO VOCÊ TEM UM PLANO, O TEMPO VIRA SEU ALIADO" + 2 PRINTS REAIS.`,
-93:`PROVA + REVERSÃO. Título à esquerda "EU NÃO TINHA A MENOR INTENÇÃO DE ESTAR AQUI." + vídeo real da Raquel grande à direita com play dourado.`,
-94:`PROJEÇÃO. Título à esquerda "QUEM SERÁ A PRÓXIMA?", vídeo real da Melissa no palco grande à direita com play dourado.`,
-95:`SELEÇÃO. Serifada centralizada: "ESTOU PROCURANDO ALGUMAS MULHERES PRA AJUDAR A SE LIBERTAR DO SILÊNCIO, AINDA ESTE ANO." (MULHERES dourado gigante).`,
-96:`PESO EMOCIONAL. "QUEM DEPENDE DE VOCÊ RECUPERAR A SUA VOZ?" (dourados) + sub "Seus filhos, as mulheres que você pode inspirar, a sua própria história."`,
-97:`EQUAÇÃO. Título "O PROCESSO É SIMPLES E VALIDADO" + equação visual: Identidade + Posicionamento + Comunicação = A SUA VOZ. Selo "Não é sorte. É método."`,
-98:`DIVISOR. "O PRÓXIMO NÍVEL" (PRÓXIMO NÍVEL dourado) gigante, tela limpa com filetes de luz.`,
-99:`ENQUADRE. "ESTE ENCONTRO FOI O PRIMEIRO PASSO." + sub "O próximo nível é pra quem realmente quer se libertar do silêncio e subir de patamar."`,
-100:`QUEBRA DE PADRÃO. Sans pesada: "E OLHA: NÃO É SOBRE COMPRAR NADA AGORA." (NÃO É SOBRE COMPRAR NADA dourado).`,
-101:`DECISÃO. Palavra única gigante: "É SOBRE UMA DECISÃO." (DECISÃO dourado enorme).`,
-102:`INSCRIÇÃO. "AS MULHERES QUE QUEREM SUBIR DE NÍVEL SE INSCREVEM NO LINK." + ícone/elo de corrente dourado ou botão de link luminoso.`,
-103:`AVALIAÇÃO 30 MIN. "E EU, PESSOALMENTE, VOU FAZER UMA AVALIAÇÃO DE 30 MINUTOS COM CADA UMA." + relógio dourado com arco de 30 minutos destacado.`,
-104:`O PREÇO. "O PREÇO?" (gigante dourado) + sub: "O silêncio já te custou anos, oportunidades, convites e propósito. Aqui, o preço é só: se inscrever, ter vontade real de mudar e me dar 30 minutos do seu tempo."`,
-105:`VALE A PENA. "VALE A PENA?" (A PENA? dourado gigante), tela de impacto limpa.`,
-106:`PROVA FINAL. "ELAS DECIDIRAM, E DISSERAM QUE VALEU." + galeria em destaque com 3 fotos grandes (Melissa Esquilino, Polyane Mendes e Ana Marques no palco com a Dany, nome sobre a foto) + sub sobre a superação delas.`,
-107:`ESCASSEZ. "3 VAGAS EXCLUSIVAS PARA PALESTRAR NO PRÓXIMO EVENTO DA DANY." (3 VAGAS EXCLUSIVAS e PRÓXIMO EVENTO dourados) + coroa dourada com brilho.`,
-108:`CONVITE FINAL. Título à esquerda "VOCÊ SERÁ A PRÓXIMA?", vídeo real da Vanessa grande à direita (ela cita Kate e Raquel).`,
-109:`CTA. Esquerda: "ACESSE AGORA E GARANTA SUA VAGA" (serifada dourada) + 2 bullets + botão "INSCREVER-SE". Direita: QR CODE real de inscrição em card branco com moldura dourada + @ do Instagram.`,
-110:`FECHO INSPIRACIONAL. Aspas douradas grandes: "O FUTURO NÃO É ALGO QUE ACONTECE. É ALGO QUE VOCÊ CRIA." (CRIA dourado) + QR code à direita.`,
-111:`ENCERRAMENTO. Foto da Dany sorrindo ao fundo, texto na BASE do slide: kicker "O PREÇO DO SILÊNCIO" + "QUEM SE POSICIONA, É OUVIDA."`
+93:`PROJEÇÃO. Título à esquerda "QUEM SERÁ A PRÓXIMA?", vídeo real da Melissa no palco grande à direita com play dourado.`,
+94:`SELEÇÃO. Serifada centralizada: "ESTOU PROCURANDO ALGUMAS MULHERES PRA AJUDAR A SE LIBERTAR DO SILÊNCIO, AINDA ESTE ANO." (MULHERES dourado gigante).`,
+95:`PESO EMOCIONAL. "QUEM DEPENDE DE VOCÊ RECUPERAR A SUA VOZ?" (dourados) + sub "Seus filhos, as mulheres que você pode inspirar, a sua própria história."`,
+96:`EQUAÇÃO. Título "O PROCESSO É SIMPLES E VALIDADO" + equação visual: Identidade + Posicionamento + Comunicação = A SUA VOZ. Selo "Não é sorte. É método."`,
+97:`DIVISOR. "O PRÓXIMO NÍVEL" (PRÓXIMO NÍVEL dourado) gigante, tela limpa com filetes de luz.`,
+98:`ENQUADRE. "ESTE ENCONTRO FOI O PRIMEIRO PASSO." + sub "O próximo nível é pra quem realmente quer se libertar do silêncio e subir de patamar."`,
+99:`QUEBRA DE PADRÃO. Sans pesada: "E OLHA: NÃO É SOBRE COMPRAR NADA AGORA." (NÃO É SOBRE COMPRAR NADA dourado).`,
+100:`DECISÃO. Palavra única gigante: "É SOBRE UMA DECISÃO." (DECISÃO dourado enorme).`,
+101:`INSCRIÇÃO. "AS MULHERES QUE QUEREM SUBIR DE NÍVEL SE INSCREVEM NO LINK." + ícone/elo de corrente dourado ou botão de link luminoso.`,
+102:`AVALIAÇÃO 30 MIN. "E EU, PESSOALMENTE, VOU FAZER UMA AVALIAÇÃO DE 30 MINUTOS COM CADA UMA." + relógio dourado com arco de 30 minutos destacado.`,
+103:`O PREÇO. "O PREÇO?" (gigante dourado) + sub: "O silêncio já te custou anos, oportunidades, convites e propósito. Aqui, o preço é só: se inscrever, ter vontade real de mudar e me dar 30 minutos do seu tempo."`,
+104:`VALE A PENA. "VALE A PENA?" (A PENA? dourado gigante), tela de impacto limpa.`,
+105:`PROVA FINAL. "ELAS DECIDIRAM, E DISSERAM QUE VALEU." + galeria em destaque com 3 fotos grandes (Melissa Esquilino, Polyane Mendes e Ana Marques no palco com a Dany, nome sobre a foto) + sub sobre a superação delas.`,
+106:`ESCASSEZ. "3 VAGAS EXCLUSIVAS PARA PALESTRAR NO PRÓXIMO EVENTO DA DANY." (3 VAGAS EXCLUSIVAS e PRÓXIMO EVENTO dourados) + coroa dourada com brilho.`,
+107:`CONVITE FINAL. Título à esquerda "VOCÊ SERÁ A PRÓXIMA?", vídeo real da Vanessa grande à direita (ela cita Kate e Raquel).`,
+108:`CTA. Esquerda: "ACESSE AGORA E GARANTA SUA VAGA" (serifada dourada) + 2 bullets + botão "INSCREVER-SE". Direita: QR CODE real de inscrição em card branco com moldura dourada + @ do Instagram.`,
+109:`FECHO INSPIRACIONAL. Aspas douradas grandes: "O FUTURO NÃO É ALGO QUE ACONTECE. É ALGO QUE VOCÊ CRIA." (CRIA dourado) + QR code à direita.`,
+110:`ENCERRAMENTO. Foto da Dany sorrindo ao fundo, texto na BASE do slide: kicker "O PREÇO DO SILÊNCIO" + "QUEM SE POSICIONA, É OUVIDA."`
 };
 const FALAS={
 1:`Boas-vindas com energia: "Sejam muito bem-vindas ao O Preço do Silêncio!" Apresente a promessa da noite (voz, identidade e lugar) e avise: quem ficar até o final ganha 2 bônus exclusivos. Peça pra confirmarem no chat se o som e a imagem estão ok.`,
@@ -1040,25 +1038,24 @@ const FALAS={
 90:`"E você não vai sozinha." Fale do movimento, das mulheres que sobem juntas, Queens Club World.`,
 91:`Leia a lista e aponte o CTA: "se alguma dessas é você, escreve EU no chat, AGORA." Espere as reações aparecerem e leia alguns nomes em voz alta.`,
 92:`"Com um plano, o tempo vira seu aliado." Prova de velocidade.`,
-93:`Rode o vídeo da Raquel: "eu não tinha a menor intenção de estar aqui." Use pra derrubar a objeção: "ela também achava que não era pra ela. Você não falhou, só não tinha o método certo."`,
-94:`Rode o vídeo da Melissa no palco. "Ela decidiu. Quem será a próxima?" Deixe a pergunta no ar 3 segundos antes de avançar.`,
-95:`A SELEÇÃO (tom sério e generoso): "eu estou procurando algumas mulheres pra ajudar a se libertar do silêncio ainda este ano."`,
-96:`Peso emocional: "quem depende de você recuperar a sua voz? Seus filhos... as mulheres que você vai inspirar... a sua própria história." Aponte o CTA pulsando: "escreve EU no chat." Esse EU é o micro-sim que prepara o cadastro.`,
-97:`A fórmula: "identidade + posicionamento + comunicação = a sua voz de volta. Não é sorte. É método."`,
-98:`Anuncie com pausa: "e existe... um PRÓXIMO NÍVEL." Leia a sub-headline como pergunta direta: "você realmente quer subir o próximo degrau desta escada e abrir a sua voz para o mundo?"`,
-99:`"Esse encontro foi o primeiro passo. O próximo nível é pra quem quer realmente se libertar do silêncio e subir de patamar."`,
-100:`Quebre a defesa: "e olha, não é sobre comprar nada agora." Deixe o alívio aparecer no chat.`,
-101:`Curto e firme: "é sobre uma DECISÃO."`,
-102:`Instrução clara e repetida: "as mulheres que querem subir de nível se inscrevem no link que está no chat / no QR da tela."`,
-103:`A entrega: "e eu, PESSOALMENTE, vou fazer uma avaliação de 30 minutos com cada uma, pra olhar a sua comunicação e te mostrar o seu próximo passo."`,
-104:`O pitch central. Percorra a coluna da esquerda (o que o silêncio já custou) devagar, depois a da direita: "tudo o que se pede agora é: se inscrever, querer mudar de verdade e 30 minutos do seu tempo comigo na análise de perfil." Feche com a frase da base: "você já pagou o preço mais caro. O resto é só decisão."`,
-105:`"Vale a pena?" Pausa. Deixe o chat responder. Leia alguns SIM.`,
-106:`Prova final: aponte as 3 fotos (Melissa, Polyane e Ana): "cada uma chegou com uma história de silêncio. Subiram no palco, venceram o medo, e hoje são donas das próprias vozes. Elas decidiram, e disseram que valeu."`,
-107:`Escassez (repita 2x): "3 vagas exclusivas para palestrar no meu próximo evento."`,
-108:`Rode o vídeo da Vanessa: ela viu de perto a virada da Kate e da Raquel (que a audiência acabou de assistir). Depois, olho na câmera: "você será a próxima? Então se inscreve no link, e a gente conversa 30 minutos, eu e você."`,
-109:`CTA final: mostre o QR, repita a instrução devagar, confirme no chat quem já se inscreveu ("quem se inscreveu digita INSCRITA").`,
-110:`Frase de fecho: "o futuro não é algo que acontece, é algo que você cria." Mostre o link mais uma vez.`,
-111:`Encerramento: "quem se posiciona... é ouvida." Agradeça, ore/abençoe as mulheres (do seu jeito) e despeça-se lembrando o link e as 10 vagas.`
+93:`Rode o vídeo da Melissa no palco. "Ela decidiu. Quem será a próxima?" Deixe a pergunta no ar 3 segundos antes de avançar.`,
+94:`A SELEÇÃO (tom sério e generoso): "eu estou procurando algumas mulheres pra ajudar a se libertar do silêncio ainda este ano."`,
+95:`Peso emocional: "quem depende de você recuperar a sua voz? Seus filhos... as mulheres que você vai inspirar... a sua própria história." Aponte o CTA pulsando: "escreve EU no chat." Esse EU é o micro-sim que prepara o cadastro.`,
+96:`A fórmula: "identidade + posicionamento + comunicação = a sua voz de volta. Não é sorte. É método."`,
+97:`Anuncie com pausa: "e existe... um PRÓXIMO NÍVEL." Leia a sub-headline como pergunta direta: "você realmente quer subir o próximo degrau desta escada e abrir a sua voz para o mundo?"`,
+98:`"Esse encontro foi o primeiro passo. O próximo nível é pra quem quer realmente se libertar do silêncio e subir de patamar."`,
+99:`Quebre a defesa: "e olha, não é sobre comprar nada agora." Deixe o alívio aparecer no chat.`,
+100:`Curto e firme: "é sobre uma DECISÃO."`,
+101:`Instrução clara e repetida: "as mulheres que querem subir de nível se inscrevem no link que está no chat / no QR da tela."`,
+102:`A entrega: "e eu, PESSOALMENTE, vou fazer uma avaliação de 30 minutos com cada uma, pra olhar a sua comunicação e te mostrar o seu próximo passo."`,
+103:`O pitch central. Percorra a coluna da esquerda (o que o silêncio já custou) devagar, depois a da direita: "tudo o que se pede agora é: se inscrever, querer mudar de verdade e 30 minutos do seu tempo comigo na análise de perfil." Feche com a frase da base: "você já pagou o preço mais caro. O resto é só decisão."`,
+104:`"Vale a pena?" Pausa. Deixe o chat responder. Leia alguns SIM.`,
+105:`Prova final: aponte as 3 fotos (Melissa, Polyane e Ana): "cada uma chegou com uma história de silêncio. Subiram no palco, venceram o medo, e hoje são donas das próprias vozes. Elas decidiram, e disseram que valeu."`,
+106:`Escassez (repita 2x): "3 vagas exclusivas para palestrar no meu próximo evento."`,
+107:`Rode o vídeo da Vanessa: ela viu de perto a virada da Kate e da Raquel (que a audiência acabou de assistir). Depois, olho na câmera: "você será a próxima? Então se inscreve no link, e a gente conversa 30 minutos, eu e você."`,
+108:`CTA final: mostre o QR, repita a instrução devagar, confirme no chat quem já se inscreveu ("quem se inscreveu digita INSCRITA").`,
+109:`Frase de fecho: "o futuro não é algo que acontece, é algo que você cria." Mostre o link mais uma vez.`,
+110:`Encerramento: "quem se posiciona... é ouvida." Agradeça, ore/abençoe as mulheres (do seu jeito) e despeça-se lembrando o link e as 10 vagas.`
 };
 
 /* ---------- concept visual library ---------- */
@@ -1133,9 +1130,9 @@ function videoRow(n,label,slideN){const rvArr=slideN&&REALVID[slideN];const isPa
 /* ---------- renderer ---------- */
 /* Direção da foto sangrada por slide (avaliação slide a slide):
    eR=direita · eL=esquerda · eT=metade superior · eB=metade inferior */
-const EDGE={9:'eR',12:'eR',18:'eR',21:'eR',22:'eR',26:'eB',27:'eL',31:'eR',33:'eR',50:'eR',56:'eR',77:'eR',90:'eR',106:'eR'};
+const EDGE={9:'eR',12:'eR',18:'eR',21:'eR',22:'eR',26:'eB',27:'eL',31:'eR',33:'eR',50:'eR',56:'eR',77:'eR',90:'eR',105:'eR'};
 /* Conceitos (arte SVG) simulados em meia tela, até a imagem real chegar */
-const CEDGE={2:'eR',13:'eB',14:'eR',15:'eR',17:'eR',19:'eR',20:'eR',32:'eB',37:'eR',43:'eR',44:'eB',46:'eR',52:'eR',57:'eR',58:'eR',61:'eR',69:'eB',71:'eR',76:'eB',81:'eR',83:'eR',97:'eR',102:'eR',103:'eR',107:'eR'};
+const CEDGE={2:'eR',13:'eB',14:'eR',15:'eR',17:'eR',19:'eR',20:'eR',32:'eB',37:'eR',43:'eR',44:'eB',46:'eR',52:'eR',57:'eR',58:'eR',61:'eR',69:'eB',71:'eR',76:'eB',81:'eR',83:'eR',96:'eR',101:'eR',102:'eR',106:'eR'};
 const LICON={
 4:['eye','mic','compass','users','flame','heart','star','book','crown'],
 6:['flame','hourglass','users','eye','shield','spark','check','clock','target'],
@@ -1157,15 +1154,15 @@ const EPOS={26:'center 88%'};
 const BGFIT={};
 /* ponto de recorte do overImg por slide, sempre cortar do lado VAZIO da composição, não do sujeito */
 const OPOS={2:'96% center',13:'center 100%',32:'center 38%',44:'center 82%',69:'center 14%',76:'center 82%'};
-const BGIMG={98:'S100_Escada_Liberdade.png',111:'S114_Dany_Encerramento.jpg'};
-const BGPOS={111:'center 24%'};
+const BGIMG={97:'S100_Escada_Liberdade.png',110:'S114_Dany_Encerramento.jpg'};
+const BGPOS={110:'center 24%'};
 /* headline fixa dos segredos */
 const SECBADGE={};
 [39,40,41,42,43,44,45].forEach(n=>SECBADGE[n]='SEGREDO 1 · O BLOQUEIO INVISÍVEL DA IDENTIDADE');
 [47,48,49,50,51].forEach(n=>SECBADGE[n]='SEGREDO 2 · OS CÓDIGOS DO POSICIONAMENTO COM PROPÓSITO');
 [53,54,55,56].forEach(n=>SECBADGE[n]='SEGREDO 3 · DESTRAVAR A SUA COMUNICAÇÃO');
 /* arquivo de imagem real esperado por slide conceitual (aparece na tela; cai no lugar quando existir) */
-const CFILE={2:'S002_Mapa_Constelacao.png',13:'S013_Cadeado.png',14:'S014_X_Youtube.png',15:'S015_X_Redes.png',17:'S017_X_Livro.png',19:'S019_Voz_Luz.png',20:'S020_Balao_Chat.png',32:'S032_Batalha.png',37:'S037_Grafico_Mao.png',43:'S043_Rotulos_X.png',44:'S080_Versiculo.png',46:'S046_Engrenagem_Posicionamento.png',52:'S019_Voz_Luz.png',57:'S058_Escudo.png',58:'S059_Cofre.png',61:'S062_Mecanismo_Metodo.png',69:'S073_Bifurcacao.png',71:'S075_Protocolo_Engrenagens.png',76:'S080_Versiculo.png',81:'S020_Balao_Chat.png',83:'S058_Escudo.png',97:'S099_Equacao_Pilares.png',102:'S104_Link.png',103:'S105_Relogio.png',107:'S109_Coroa.png'};
+const CFILE={2:'S002_Mapa_Constelacao.png',13:'S013_Cadeado.png',14:'S014_X_Youtube.png',15:'S015_X_Redes.png',17:'S017_X_Livro.png',19:'S019_Voz_Luz.png',20:'S020_Balao_Chat.png',32:'S032_Batalha.png',37:'S037_Grafico_Mao.png',43:'S043_Rotulos_X.png',44:'S080_Versiculo.png',46:'S046_Engrenagem_Posicionamento.png',52:'S019_Voz_Luz.png',57:'S058_Escudo.png',58:'S059_Cofre.png',61:'S062_Mecanismo_Metodo.png',69:'S073_Bifurcacao.png',71:'S075_Protocolo_Engrenagens.png',76:'S080_Versiculo.png',81:'S020_Balao_Chat.png',83:'S058_Escudo.png',96:'S099_Equacao_Pilares.png',101:'S104_Link.png',102:'S105_Relogio.png',106:'S109_Coroa.png'};
 /* depoimentos reais, vindos dos vídeos, prints e mensagens que a Dany separou (jul/2026). Nome mantido só quando a pessoa se identificou. */
 const QUOTES={
 11:[{txt:'O que preocupa não é o barulho dos maus, mas o silêncio dos bons. Então que venha se levantar a palavra.',name:'Josilene B.',tag:'Depoimento real',photo:'VIDEO DEPOIMENTO JOSILENE BATISTA/FOTO PEFIL.png'},
@@ -1193,12 +1190,11 @@ const PEOPLESTRIP={};
 /* vídeos reais de depoimento por slide (índice = ordem do card no slide) */
 const REALVID={
 63:[{src:'VIDEO DEPOIMENTO CATHERINE/DEPOIMENTO CATHERINE.mp4',name:'Catherine',role:'Mentorada',caption:'De quem morria de vergonha de gravar um vídeo, pra falar em público sem travar: "foi um divisor de águas."'}],
-74:[{src:'DEPOIMENTO REAL - RAQUEL (EVENTO DANI)/RAQUEL_WEB.mp4',name:'Raquel',role:'Mentorada',caption:'"Eu não tinha a menor intenção de estar aqui. Mas Deus colocou a Dany no meu caminho, e aqui estamos."'}],
 70:[{src:'DEPOIMENTo REAL KATE - EVENTO DANY/KATE_WEB.mp4',name:'Kate',role:'Mentorada',caption:'"Quase morri de medo de subir naquele palco. Mas algo mais forte me impulsionou: hoje eu não quero mais ficar escondida."'}],
 72:[{src:'VIDEO DE AUDIO DO WHATSAPP DEPOIMENTO SEM NOME (AUDIO)/DPOIMENTO EM AUDIO FORTE.mp4',name:'Depoimento real',role:'nome preservado a pedido dela',caption:'Obrigada por me impulsionar a subir de nível. Hoje eu sei: você foi a ponte que eu pedi a Deus.'}],
-93:[{src:'DEPOIMENTO REAL - RAQUEL (EVENTO DANI)/RAQUEL_WEB.mp4',name:'Raquel',role:'Mentorada',caption:'"Eu não tinha a menor intenção de estar aqui. Mas Deus colocou a Dany no meu caminho, e aqui estamos."'}],
-94:[{src:'MENTORADA MELISSA ESQILINO/MELISSA_WEB.mp4',name:'Melissa Esquilino',role:'Mentorada',caption:'Subiu no palco do Encontro das Queens pra contar a própria transformação, ao vivo, na frente de todo mundo.'}],
-108:[
+74:[{src:'DEPOIMENTO REAL - RAQUEL (EVENTO DANI)/RAQUEL_WEB.mp4',name:'Raquel',role:'Mentorada',caption:'"Eu não tinha a menor intenção de estar aqui. Mas Deus colocou a Dany no meu caminho, e aqui estamos."'}],
+93:[{src:'MENTORADA MELISSA ESQILINO/MELISSA_WEB.mp4',name:'Melissa Esquilino',role:'Mentorada',caption:'Subiu no palco do Encontro das Queens pra contar a própria transformação, ao vivo, na frente de todo mundo.'}],
+107:[
 {src:'DEPOIMENTO REAL - VANESSA - EVENTO DANY/VANESSA_WEB.mp4',name:'Vanessa',role:'convidada do evento',caption:'"Timidez não é comportamento, é trauma. Já vi o que a Dany fez com a Kate, com a Raquel, e com tantas outras. Vi um aluno dela parecer que tinha nascido naquele palco."'}]
 };
 function fsVid(btn){const v=btn.parentElement.querySelector('video');if(v.requestFullscreen)v.requestFullscreen();else if(v.webkitRequestFullscreen)v.webkitRequestFullscreen();else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen();}
@@ -1281,10 +1277,10 @@ function render(s){
     const bgPosStyle=BGPOS[n]?` style="object-position:${BGPOS[n]}"`:'';
     const bg=BGIMG[n]?`<div class="bgImg"><img src="../FOTOS ILUSTRATIVAS/${BGIMG[n]}"${bgPosStyle} onerror="this.parentElement.classList.add('empty')"><span class="edgeLab">${BGIMG[n]}</span></div>`:'';
     const bgTop=BGIMG[n]?'margin-top:-26px;':'';
-    if(n===104){ /* pitch final: usa 100% da largura do slide */
+    if(n===103){ /* pitch final: usa 100% da largura do slide */
       return `<div class="center" style="margin:auto;max-width:1560px;width:100%;position:relative;z-index:2">${kick}${title}<div class="los">◈</div>${extra}</div>`;
     }
-    if(n===111){ /* encerramento: texto na base do slide, sobre a parte escura da foto */
+    if(n===110){ /* encerramento: texto na base do slide, sobre a parte escura da foto */
       return `${bg}<div class="center" style="margin:auto auto 12px;max-width:1000px;position:relative;z-index:2">${kick}${title}<div class="los">◈</div>${sub}</div>`;
     }
     return `${bg}<div class="center" style="margin:auto;max-width:1000px;position:relative;z-index:2;${bgTop}">${kick}${s.selo?`<div style="margin:6px 0 10px"><span class="pill">${s.selo}</span></div>`:''}${title}<div class="los">◈</div>${sub}${bullets}${fecho}${btn}${extra}</div>`;
