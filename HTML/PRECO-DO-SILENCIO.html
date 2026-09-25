@@ -755,7 +755,7 @@ html,body{touch-action:manipulation}           /* mata o zoom de toque duplo */
 }
 </style>
 </head>
-<body class="tblack">
+<body class="tblack pw-ok">
 <style>
 /* O gate cobre a tela com fundo 100% opaco (nao usamos visibility:hidden
    no conteudo por baixo): Safari deprioriza/pula o carregamento de
@@ -786,64 +786,6 @@ body:not(.pw-ok) #shell,body:not(.pw-ok) #hud{pointer-events:none}
 #pwGate .pwErr{color:#D23B2E;font-family:Inter,Arial,sans-serif;font-size:12px;margin-top:14px;min-height:16px;letter-spacing:.05em}
 body.pw-ok #pwGate{display:none}
 </style>
-<div id="pwGate">
-  <div class="pwBox">
-    <div class="pwTitle">O Preço do Silêncio</div>
-    <div class="pwSub">Acesso restrito · Mentoria Dany Rocha</div>
-    <div class="pwFieldWrap">
-      <input id="pwInput" type="password" placeholder="Senha de acesso" autocomplete="off">
-      <button id="pwToggle" type="button" class="pwEye" title="Mostrar senha" aria-label="Mostrar senha">👁</button>
-    </div>
-    <label class="pwRemember"><input type="checkbox" id="pwRemember"> Lembrar senha neste dispositivo</label>
-    <button id="pwBtn" type="button">ENTRAR</button>
-    <div class="pwErr" id="pwErr"></div>
-  </div>
-</div>
-<script>
-(function(){
-  var HASH='d0eea09126f13844e0048842e86fdddd3245f3cba6b4e262a9a4d38fb789f0ae';
-  var KEY='pds_auth';
-  function unlock(){document.body.classList.add('pw-ok');}
-  if(sessionStorage.getItem(KEY)===HASH||localStorage.getItem(KEY)===HASH){unlock();return;}
-  var gate=document.getElementById('pwGate');
-  gate.addEventListener('keydown',function(e){e.stopPropagation();});
-  gate.addEventListener('keyup',function(e){e.stopPropagation();});
-  document.addEventListener('keydown',function(e){if(!document.body.classList.contains('pw-ok'))e.stopPropagation();});
-  document.addEventListener('keyup',function(e){if(!document.body.classList.contains('pw-ok'))e.stopPropagation();});
-  function sha256(t){
-    return crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)).then(function(buf){
-      return Array.prototype.map.call(new Uint8Array(buf),function(b){return b.toString(16).padStart(2,'0');}).join('');
-    });
-  }
-  function tryPw(){
-    var v=document.getElementById('pwInput').value.trim();
-    if(!v)return;
-    sha256(v).then(function(h){
-      if(h===HASH){
-        if(document.getElementById('pwRemember').checked){localStorage.setItem(KEY,h);}
-        else{sessionStorage.setItem(KEY,h);}
-        unlock();
-      }else{
-        document.getElementById('pwErr').textContent='Senha incorreta. Tente novamente.';
-        document.getElementById('pwInput').value='';
-        document.getElementById('pwInput').focus();
-      }
-    });
-  }
-  document.getElementById('pwBtn').addEventListener('click',tryPw);
-  document.getElementById('pwInput').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
-  document.getElementById('pwToggle').addEventListener('click',function(){
-    var inp=document.getElementById('pwInput');
-    var showing=inp.type==='text';
-    inp.type=showing?'password':'text';
-    this.textContent=showing?'👁':'🙈';
-    this.title=showing?'Mostrar senha':'Ocultar senha';
-    this.setAttribute('aria-label',this.title);
-    inp.focus();
-  });
-  window.addEventListener('load',function(){document.getElementById('pwInput').focus();});
-})();
-</script>
 <div id="shell">
   <div id="side"><div id="sideInner">
     <div class="shead">
